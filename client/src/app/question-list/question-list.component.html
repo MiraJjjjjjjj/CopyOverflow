@@ -1,0 +1,84 @@
+<div class="container pb-1">
+  <h3>All Questions (from StackOverflow)</h3>
+</div>
+<div class="container">
+
+  <form #questionForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-sm">
+            <label class="parameter-label" for="order">Order</label>
+            <select (change)="createUri()" class="form-control" id="order" required [(ngModel)]="model.order" name="order">
+                <option *ngFor="let order of orderOptions" [value]="order">{{order}}</option>
+            </select>
+        </div>
+        <div class="form-group col-sm">
+            <label class="parameter-label" for="sort">Sort</label>
+            <select (change)="createUri()" class="form-control" id="sort" required [(ngModel)]="model.sort" name="sort">
+                <option *ngFor="let sort of sortOptions" [value]="sort">{{sort}}</option>
+            </select>
+        </div>
+        <div class="form-group col-sm">
+            <label class="parameter-label" for="name">Tag</label>
+            <input (keyup)="createUri()" type="text" class="form-control" id="tagged" required [(ngModel)]="model.tagged" name="tagged">
+        </div>
+        <div class="form-group col-sm">
+            <label class="parameter-label" for="to-date">ToDate</label>
+            <div class="input-group">
+                <input (keyup) = "createUri()" (dateSelect)="createUri()" class="form-control" placeholder="yyyy-mm-dd"
+                       name="to-date" [(ngModel)]="model.toDate" ngbDatepicker #d1="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+                </div>
+              </div>
+          </div>
+          <div class="form-group col-sm">
+              <label class="parameter-label" for="to-date">FromDate</label>
+              <div class="input-group">
+                  <input (keyup) = "createUri()" (dateSelect)="createUri()" class="form-control" placeholder="yyyy-mm-dd"
+                         name="to-date" [(ngModel)]="model.fromDate" ngbDatepicker #d2="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                  </div>
+                </div>
+          </div>
+    </div>
+    <hr><br>
+    <div class="i-am-not-forwarding-this pb-1">
+        <h5>This is where the copy happens</h5>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="{{ url + uri }}">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+  </form>
+  <tbody>
+      <tr *ngFor="let question of questions">
+        <td>
+          <div class="media">
+            <div class="media-left text-white">
+                <div class="vote">
+                    <div class="votes">
+                        <span class="vote-count-post "><strong>{{question.score}}</strong></span>
+                        <div class="viewcount">votes</div>
+                    </div>
+                </div>
+                <div class="answer-status">
+                    <p><strong>{{question.answer_count}}</strong> answers</p>
+                </div>
+            </div>
+            <div class="media-body">
+              <h3 class="media-heading">
+                <a href="{{question.link}}">
+                  {{question.title}}</a>
+                </h3>
+                <span class="badge badge-pill badge-secondary" *ngFor="let tag of question.tags">{{tag}}</span>
+            </div>
+          </div>
+      </tr>
+    </tbody>
+</div>
+
+
+

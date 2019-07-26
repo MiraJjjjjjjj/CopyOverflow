@@ -1,0 +1,47 @@
+label {
+  width:100px;
+  clear:left;
+  text-align:right;
+  padding-right:10px;
+}
+
+.media-left {
+  padding: 10px;
+  background: #343A40;
+  max-width: 10%;
+  min-width: 10%;
+}
+
+.parameter-label{
+  text-align: left;
+}
+
+.i-am-not-forwarding-this{
+  text-align: left;
+}
+
+.media {
+  padding-bottom: 10px;
+}
+
+.votes {
+  padding: 0;
+  text-align: center;
+}
+
+.answer-status {
+  text-align: center;
+}
+
+.media-body {
+  padding-left: 10px;
+}
+
+.media-heading {
+  padding-top: 5px;
+  font-size: 120%;
+}
+.fetched-url {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
